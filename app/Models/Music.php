@@ -9,10 +9,10 @@ class Music extends Model
 {
     use HasFactory;
 
-    protected $fillable = (
+    protected $fillable = [
         'playlist',
         'creator',
         'release year',
         'description',
-    );
+    ];
 }

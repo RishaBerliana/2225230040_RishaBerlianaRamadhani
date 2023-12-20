@@ -10,30 +10,40 @@ class MusicController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @return\Illuminate\Response
      */
     public function index()
     {
     
         $musics = Music::orderBy('created_at', 'DESC')->get();
-        
+
         return view('pages.music.index', compact('musics'));
 
     }
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('pages.music.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+       
+       Music::create($request->all());
+    
+       return redirect()->route('music.index')->with('success', 'Music added successfully');
     }
 
     /**

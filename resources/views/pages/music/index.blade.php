@@ -7,7 +7,7 @@
     </div>
     <hr />
     <table class="table table-hover">
-        <thead class="table-light">
+        <thead class="table-primary">
             <tr>
                 <th>No</th>
                 <th>Playlist</th>
@@ -18,24 +18,24 @@
         </thead>
         <tbody>
             @if($musics->count() > 0)
-            @foreach($musics as $music)
-                <tr>
-                    <td class="align-middle">{{ $loop->iteration }}</td>
-                    <td class="align-middle">{{ $music->playlist }}</td>
-                    <td class="align-middle">{{ $music->creator }}</td>
-                    <td class="align-middle">{{ $music->release year }}</td>
-                    <td class="align-middle">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary">Detail</button>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($musics as $music)
+                    <tr>
+                        <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $music->playlist }}</td>
+                        <td class="align-middle">{{ $music->creator }}</td>
+                        <td class="align-middle">{( $music->release year )}</td>
+                        <td class="align-middle">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">Detail</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
             @else
                 <tr>
-                    <td>Music not found</td>
+                    <td class="text-center" colspan="5">Music not found</td>
                 </tr>
             @endif
         </tbody>
