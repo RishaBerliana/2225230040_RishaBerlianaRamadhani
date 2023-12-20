@@ -40,10 +40,9 @@ class MusicController extends Controller
      */
     public function store(Request $request)
     {
-       
-       Music::create($request->all());
-    
-       return redirect()->route('music.index')->with('success', 'Music added successfully');
+        Music::create($request->all());
+
+        return redirect()->route('music.index')->with('success', 'Music added successfully');
     }
 
     /**
@@ -51,7 +50,9 @@ class MusicController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $music = Music::findOrFail($id);
+
+        return view('pages.music.show', compact('music'));
     }
 
     /**
